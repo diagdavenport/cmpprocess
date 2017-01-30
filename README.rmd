@@ -46,7 +46,7 @@ The cmpprocess package houses 6 data sets (three phenomena each with a count and
 
 * particlecount, particlewait
 
-For illustrative purposes, the CMPProcess codes are applied to analyze the Negro flood data set:
+For illustrative purposes, the CMPProcess codes are applied to analyze the Rio Negro flood data set:
 
 ```R
   data(floodcount)
