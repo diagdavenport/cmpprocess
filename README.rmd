@@ -1,0 +1,70 @@
+---
+title: "README"
+author: "ddd"
+date: "January 6, 2017"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## cmpprocess
+
+cmpprocess is a toolkit for flexible modeling of count processes where data (over- or under-) dispersion exists.
+
+Estimations can be obtained under three data constructs where one has:
+
+(1) data on number of events in a single time unit,
+
+(2) only wait-time data, or 
+
+(3) data on the number of events in an s-unit interval.
+
+To use cmpprocess, one will first need to install the following two packages: 
+
+```R
+  install.packages("compoisson")
+  install.packages("numDeriv")
+````
+
+One can install the latest released version of cmpprocess from CRAN with:
+
+```R
+  install.packages("cmpprocess")
+````
+
+## Using cmpprocess
+
+To get started with cmpprocess right away, read the notes below. For a more detailed and technical description of COMPoisson processes, see [Sellers et al. (2016)](http://amstat.tandfonline.com/doi/full/10.1080/00031305.2016.1234976).
+
+The cmpprocess package houses 6 data sets (three phenomena each with a count and waiting time variant)
+
+* floodcount, floodwait
+
+* fetalcount, fetalwait
+
+* particlecount, particlewait
+
+For illustrative purposes, the CMPProcess codes are applied to analyze the Negro flood data set:
+
+```R
+  data(floodcount)
+````
+
+Note that the key data structures for the CMPProcess codes are vectors (or any ordered sequence) of counts or wait times. These structures will be called in each of the following examples.
+  
+```R
+
+# Method 1
+CMPProcess(floodcount$Counts)
+
+# Method 2
+## Assume the analyst knows the dispersion from the count data
+CMPProcessWT(.8 , mean(floodwait$WT))
+
+# Method 3
+### collapse the floodcount data (into what size bin?)
+SCMPProcess(bin_size, data)
+
+````
