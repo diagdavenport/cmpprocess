@@ -1,3 +1,4 @@
+#' description
 #' years of major floods between 1892-1992 (inclusive) on the Rio Negro River in Brazil
 #'
 #' @format A dataframe with 101 rows and 2 variabes:
