@@ -1,65 +1,48 @@
-#' years of major floods between 1892-1992 (inclusive) on the Rio Negro River in Brazil
+#' Rio Negro floods
+#' 
+#' Years of major floods between 1892-1992 (inclusive) on the Rio Negro River in Brazil
 #'
-#' @format A dataframe with 101 rows and 2 variabes:
+#' @format A dataframe with 101 rows and 2 variables:
 #' \describe{
-#'  \item{Year}(Year)
+#'  \item{Year}{Year of reference}
 #'  \item{Counts}{Count of floods in a given year, note that the variance is .166 and the mean is .208}
 #' }
 #'
 #' @source (Brillinger , 1995; Guttorp , 1995)
 "floodcount"
 
-#' description
+#' Rio Negro flood wait times
+#' 
+#' Time between major floods between 1892-1992 (inclusive) on the Rio Negro River in Brazil
 #'
-#' @format
+#' @format A dataframe with 20 rows and 1 variable:
 #' \describe{
-#'  \item{}
-#'  \item{}
+#'  \item{WT}{Number of years between floods}
 #' }
 #'
-#' @source
+#' @source (Brillinger , 1995; Guttorp , 1995)
 "floodwait"
 
-#' description
+#' Fetal lamb movements
 #'
-#' @format
+#' Number of movements by a fetal lamb observed by ultrasound and counted in successive 5-second intervals
+#'
+#' @format A dataframe with 224 rows and 1 variable
 #' \describe{
-#'  \item{}
-#'  \item{}
+#'  \item{Counts}{Number of movements, note that the variance is .693 and the mean is .382}
 #' }
 #'
-#' @source
+#' @source (Guttorp , 1995)
 "fetalcount"
 
-#' description
+#' Fetal lamb movement wait times 
 #'
-#' @format
+#' Time between movements by a fetal lamb observed by ultrasound
+#'
+#' @format A dataframe with 58 rows and 1 variable
 #' \describe{
-#'  \item{}
-#'  \item{}
+#'  \item{WT}{Number of 5-second intervals between fetal movements}
 #' }
 #'
 #' @source
 "fetalwait"
-
-#' description
-#'
-#' @format
-#' \describe{
-#'  \item{}
-#'  \item{}
-#' }
-#'
-#' @source
-"particlecount"
-
-#' description
-#'
-#' @format
-#' \describe{
-#'  \item{}
-#'  \item{}
-#' }
-#'
-#' @source
-"particlewait"

@@ -13,13 +13,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 cmpprocess is a toolkit for flexible modeling of count processes where data (over- or under-) dispersion exists.
 
-Estimations can be obtained under three data constructs where one has:
+Estimations can be obtained under two data constructs where one has:
 
-(1) data on number of events in a single time unit,
+(1) data on number of events in an s-unit time interval, or
 
-(2) only wait-time data, or 
-
-(3) data on the number of events in an s-unit interval.
+(2) only wait-time data
 
 To use cmpprocess, one will first need to install the following two packages: 
 
@@ -36,15 +34,13 @@ One can install the latest released version of cmpprocess from CRAN with:
 
 ## Using cmpprocess
 
-To get started with cmpprocess right away, read the notes below. For a more detailed and technical description of COMPoisson processes, see [Sellers et al. (2016)](http://amstat.tandfonline.com/doi/full/10.1080/00031305.2016.1234976).
+To get started with cmpprocess right away, read the notes below. For a more detailed and technical description of COMPoisson processes, see [Zhu et al. (2016)](http://amstat.tandfonline.com/doi/full/10.1080/00031305.2016.1234976).
 
-The cmpprocess package houses 6 data sets (three phenomena each with a count and waiting time variant)
+The cmpprocess package houses four data sets (two phenomena each with a count and waiting time variant)
 
-* floodcount, floodwait
+* floodcount, floodwait (Brillinger , 1995; Guttorp , 1995)
 
-* fetalcount, fetalwait
-
-* particlecount, particlewait
+* fetalcount, fetalwait (Guttorp , 1995)
 
 For illustrative purposes, the CMPProcess codes are applied to analyze the Rio Negro flood data set:
 
@@ -64,7 +60,7 @@ CMPProcess(floodcount$Counts)
 CMPProcessWT(.8 , mean(floodwait$WT))
 
 # Method 3
-### collapse the floodcount data (into what size bin?)
-SCMPProcess(bin_size, data)
+## Should the need arise, an alternative to method 1 is to aggregate the data to a less granular time interval
+CMPProcess(bin_size, s=3)
 
 ````
