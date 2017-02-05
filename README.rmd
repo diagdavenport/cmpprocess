@@ -59,8 +59,4 @@ CMPProcess(floodcount$Counts)
 ## Assume the analyst knows the dispersion from the count data
 CMPProcessWT(.8 , mean(floodwait$WT))
 
-# Method 3
-## Should the need arise, an alternative to method 1 is to aggregate the data to a less granular time interval
-CMPProcess(bin_size, s=3)
-
 ````
