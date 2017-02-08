@@ -1,9 +1,9 @@
 #' COM Poisson Process Parameter Estimation
 #' 
-#' \code{CMPPRocess} computes the maximum likelihood estimates of a COM-Poisson process for given count data
+#' \code{CMPProcess} computes the maximum likelihood estimates of a COM-Poisson process for given count data
 #' 
 #' @param counts A vector (like object) of counts
-#' @param s The time interval corresponding to the levels of the counts vector
+#' @param s The time interval corresponding to the levels of the counts vector. Note that s must be a positive integer.
 #' 
 #' @return If the time interval (s) is 1, then CMPProcess will return: se=se, H=H, lambda=lambda, nu=nu, Z=Z, ll=loglike, aic=(4-2*loglike).
 #'     
