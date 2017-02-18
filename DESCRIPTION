@@ -1,10 +1,24 @@
-Package: cmpproc
+Package: cmpprocess
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Title: Flexible Modeling of Count Processes
+Version: 1.0
+Authors@R: as.person(c(
+    "Li Zhu [aut]", 
+    "Kimberly Sellers <Kimberly.Sellers@georgetown.edu> [aut]",
+    "Darcy Morris <dls333@cornell.edu> [aut]",
+    "Galit Shmueli [aut]",
+    "Diag Davenport <diag.davenport@gmail.com> [aut, cre]"
+    ))
+Maintainer: Diag Davenport <diag.davenport@gmail.com>
+Description: A toolkit for flexible modeling of count processes where data (over- or under-) dispersion exists.
+    Estimations can be obtained under two data constructs where one has:
+    (1) data on number of events in an s-unit time interval, or (2) only wait-time data.
+    This package is supplementary to the work set forth in Zhu et al. (2016).
+Imports: 
+    compoisson,
+    numDeriv
+URL: http://amstat.tandfonline.com/doi/full/10.1080/00031305.2016.1234976#.WKfOdPkrJPY
+BugReports: https://github.com/diagdavenport/cmpprocess/issues
+License: GPL-3
 LazyData: TRUE
 RoxygenNote: 6.0.0

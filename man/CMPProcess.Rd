@@ -2,44 +2,27 @@
 % Please edit documentation in R/CMPProcess.r
 \name{CMPProcess}
 \alias{CMPProcess}
-\title{COM Poisson Process Parameter Estimation}
+\title{COM Poisson Process Parameter Estimation.}
 \usage{
-CMPProcess(counts, s = 1)
+CMPProcess(counts, s = 1, h.out = FALSE)
 }
 \arguments{
-\item{counts}{A vector (like object) of counts}
+\item{counts}{A vector (-like object) of counts.}
 
-\item{s}{The time interval corresponding to the levels of the counts vector}
+\item{s}{The time interval corresponding to the levels of the counts vector.}
+
+\item{h.out}{A boolean indicating if the information matrix and associated standard errors are returned.
+This can have a significant impact on processing time and should be left at the default unless needed}
 }
 \value{
-If the time interval (s) is 1, then CMPProcess will return: se=se, H=H, lambda=lambda, nu=nu, Z=Z, ll=loglike, aic=(4-2*loglike).
-    
-    lambda \deqn{\ln L(\lambda, \nu | x_1,\cdots,x_n)= (\ln \lambda)\sum\limits _{i=1}^n x_i - \nu\sum\limits _{i=1}^n \ln(x_i!) - n\ln Z(\lambda,\nu)}
-    nu
-    Z
-   
-    se
-    H 
-    
-    ll
-    aic
-        
-          
-   Otherwise, if the time interval (s) is greater than 1, CMPProcess will return lambda=lambda, nu=nu, ll=loglike, aic=(4-2*loglike)
-    
-    Not sure I'm clear on the form of the ll function of sCMP process. What exactly is the dSCMP function doing?
-    
-    lambda
-    nu
-    ll
-    aic
+\code{CMPProcess} will return a list of seven elements: [1] se (Standard errors), [2] H (Information matrix), [3] lambda,
+    [4] nu, [5] Z, [6] ll (Log likelihood), and [7] aic.
 }
 \description{
-\code{CMPPRocess} computes the maximum likelihood estimates of a COM-Poisson process for given count data
+\code{CMPProcess} computes the maximum likelihood estimates of a COM-Poisson process for given count data.
 }
 \examples{
-
-## Standard use
+## Standard usage
 data(floodcount)
 CMPProcess(floodcount$Counts)
 

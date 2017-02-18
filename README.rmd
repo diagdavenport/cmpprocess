@@ -24,6 +24,7 @@ To use cmpprocess, one will first need to install the following two packages:
 ```R
   install.packages("compoisson")
   install.packages("numDeriv")
+  install.packages("stats")
 ````
 
 One can install the latest released version of cmpprocess from CRAN with:
@@ -38,7 +39,7 @@ To get started with cmpprocess right away, read the notes below. For a more deta
 
 The cmpprocess package houses four data sets (two phenomena each with a count and waiting time variant)
 
-* floodcount, floodwait (Brillinger , 1995; Guttorp , 1995)
+* floodcount, floodwait (Guttorp , 1995)
 
 * fetalcount, fetalwait (Guttorp , 1995)
 

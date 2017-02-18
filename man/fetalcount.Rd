@@ -6,7 +6,7 @@
 \title{Fetal lamb movements}
 \format{A dataframe with 224 rows and 1 variable
 \describe{
- \item{Counts}{Number of movements, note that the variance is .693 and the mean is .382}
+ \item{Counts}{Number of movements, note that the variance is 0.693 and the mean is 0.382}
 }}
 \source{
 (Guttorp , 1995)

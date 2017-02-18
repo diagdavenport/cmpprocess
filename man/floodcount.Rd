@@ -7,15 +7,16 @@
 \format{A dataframe with 101 rows and 2 variables:
 \describe{
  \item{Year}{Year of reference}
- \item{Counts}{Count of floods in a given year, note that the variance is .166 and the mean is .208}
+ \item{Counts}{Count of floods in a given year, note that the variance is 0.166 and the mean is 0.208}
 }}
 \source{
-(Brillinger , 1995; Guttorp , 1995)
+(Guttorp, 1995) See Brillinger, 1995 for full dataset.
 }
 \usage{
 floodcount
 }
 \description{
 Years of major floods between 1892-1992 (inclusive) on the Rio Negro River in Brazil
+description
 }
 \keyword{datasets}

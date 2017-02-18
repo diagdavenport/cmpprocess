@@ -9,7 +9,7 @@
  \item{WT}{Number of years between floods}
 }}
 \source{
-(Brillinger , 1995; Guttorp , 1995)
+Wait time data were derived from Guttorp, 1995.
 }
 \usage{
 floodwait
