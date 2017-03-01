@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #' COM Poisson Process Parameter Estimation.
 #'
 #' \code{CMPProcess} computes the maximum likelihood estimates of a COM-Poisson process for given count data.
@@ -11,6 +12,42 @@
 #'
 #' @examples
 #' ## Standard usage
+=======
+#' COM Poisson Process Parameter Estimation
+#' 
+#' \code{CMPProcess} computes the maximum likelihood estimates of a COM-Poisson process for given count data
+#' 
+#' @param counts A vector (like object) of counts
+#' @param s The time interval corresponding to the levels of the counts vector. Note that s must be a positive integer.
+#' 
+#' @return If the time interval (s) is 1, then CMPProcess will return: se=se, H=H, lambda=lambda, nu=nu, Z=Z, ll=loglike, aic=(4-2*loglike).
+#'     
+#'     lambda \deqn{\ln L(\lambda, \nu | x_1,\cdots,x_n)= (\ln \lambda)\sum\limits _{i=1}^n x_i - \nu\sum\limits _{i=1}^n \ln(x_i!) - n\ln Z(\lambda,\nu)}
+#'     nu
+#'     Z
+#'    
+#'     se
+#'     H 
+#'     
+#'     ll
+#'     aic
+#'         
+#'           
+#'    Otherwise, if the time interval (s) is greater than 1, CMPProcess will return lambda=lambda, nu=nu, ll=loglike, aic=(4-2*loglike)
+#'     
+#'     Not sure I'm clear on the form of the ll function of sCMP process. What exactly is the dSCMP function doing?
+#'     
+#'     lambda
+#'     nu
+#'     ll
+#'     aic
+#'     
+#'     
+#' 
+#' @examples 
+#' 
+#' ## Standard use
+>>>>>>> origin/master
 #' data(floodcount)
 #' CMPProcess(floodcount$Counts)
 #'
