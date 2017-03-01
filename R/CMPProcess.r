@@ -34,15 +34,6 @@ CMPProcess <- function(counts, s=1, h.out = FALSE) {
   }
 }
 
-#' COM Poisson Process Parameter Estimation, time interval = 1.
-#'
-#' \code{CMPProc} is strictly a helper function that is called by \code{CMPProcess}
-#'
-#' @param counts A vector (like object) of counts
-#' @param h.out A boolean indicating if the information matrix and associated standard errors are returned. This can have a significant impact on processing time and should be left at the default unless needed
-#'
-#' @return Will return a list of seven elements to \code{CMPProcess}
-
 CMPProc <- function(counts, h.out= F)
 {
   LambdaNuPair <- function(par)
@@ -73,16 +64,6 @@ CMPProc <- function(counts, h.out= F)
   
   return(list(se=se, H=H, lambda=lambda, nu=nu, Z=Z, ll=loglike, aic=(4-2*loglike)))
 }
-
-#' COM Poisson Process Parameter Estimation, time interval > 1.
-#'
-#' \code{CMPProc} is strictly a helper function that is called by \code{CMPProcess}
-#'
-#' @param counts A vector (like object) of counts
-#' @param s The time interval corresponding to the levels of the counts vector
-#' @param h.out A boolean indicating if the information matrix and associated standard errors are returned. This can have a significant impact on processing time and should be left at the default unless needed
-#'
-#' @return Will return a list of seven elements to \code{CMPProcess}
 
 SCMPProc <- function(counts, s, h.out = F)
 {
@@ -121,17 +102,6 @@ SCMPProc <- function(counts, s, h.out = F)
   
   return(list(se=se, H=H, lambda=lambda, nu=nu, Z=Z, ll=loglike, aic=(4-2*loglike)))
 }
-
-#' Compute SCMP probabilities.
-#'
-#' \code{CMPProc} is strictly a helper function that is called by \code{CMPProcess}. This code computes P(X=count) for a sCOM-Poisson(lambda, Nu, NuOfVar) distribution.
-#'
-#' @param NuOfVar Nu of Var
-#' @param Lambda Lambda
-#' @param Nu Nu
-#' @param count Count
-#'
-#' @return Will return a probability, given the supplied the parameters
 
 dSCMP <- function(NuOfVar,Lambda,Nu,count)
 {
@@ -222,9 +192,6 @@ dSCMP <- function(NuOfVar,Lambda,Nu,count)
       w <- w + 1
     }
     result2 <- result2 * (sum(storage[[t]]))
-    #cat("lambdas:",lambda,"\n")
-    #cat("nus:    ",nu,"\n")
-    #cat("Prob of",count,"counts: ", result2,"\n")
     return(result2)
   }
   
