@@ -15,9 +15,9 @@
 #' CMPProcess(floodcount$Counts)
 #'
 #' ## Aggregate to s-unit = 3
-#' three.year.bins <- list(floor((floodcount$Year-min(floodcount$Year))/3))
-#' collapsed.floodcount <- aggregate( x = floodcount, by = three.year.bins, FUN=sum)
-#' CMPProcess(collapsed.floodcount$Counts, s= 3)
+#' #three.year.bins <- list(floor((floodcount$Year-min(floodcount$Year))/3))
+#' #collapsed.floodcount <- aggregate( x = floodcount, by = three.year.bins, FUN=sum)
+#' #CMPProcess(collapsed.floodcount$Counts, s= 3)
 #'
 #' @import compoisson
 #' @import numDeriv
