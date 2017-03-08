@@ -54,10 +54,10 @@ Note that the key data structures for the CMPProcess codes are vectors (or any o
 ```R
 
 # Method 1
-CMPProcess(floodcount$Counts)
+cmpproc(floodcount$Counts)
 
 # Method 2
 ## Assume the analyst knows the dispersion from the count data
-CMPProcessWT(.8 , mean(floodwait$WT))
+cmpprocwt(.8 , mean(floodwait$WT))
 
 ````

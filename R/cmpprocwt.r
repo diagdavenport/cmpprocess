@@ -1,17 +1,17 @@
 #' COM Poisson Process Parameter Estimation
 #'
-#' \code{CMPProcessWT} computes the maximum likelihood estimates of a COM-Poisson process for given wait time data
+#' \code{cmpprocwt} computes the maximum likelihood estimates of a COM-Poisson process for given wait time data
 #'
 #' @param dispersion Ratio between the mean and variance of the process
 #' @param t A vector (like object) of wait times
 #'
-#' @return \code{CMPProcessWT} will return a list of three elements: [1] lambda, [2] nu, and [3] convergence
+#' @return \code{cmpprocwt} will return a list of three elements: [1] lambda, [2] nu, and [3] convergence
 #'
 #' @examples
 #'
 #' ## Standard use
 #' data(floodcount)
-#' CMPProcessWT(.8 , mean(floodwait$WT))
+#' cmpprocwt(.8 , mean(floodwait$WT))
 #'
 #' @import compoisson
 #' @import numDeriv
@@ -19,7 +19,7 @@
 #'
 #' @export
 
-CMPProcessWT <- function(dispersion,t)
+cmpprocwt <- function(dispersion,t)
 {
   LambdaNuPair <- function(par)
   {

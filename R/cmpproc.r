@@ -1,23 +1,23 @@
 #' COM Poisson Process Parameter Estimation.
 #'
-#' \code{CMPProcess} computes the maximum likelihood estimates of a COM-Poisson process for given count data.
+#' \code{cmpproc} computes the maximum likelihood estimates of a COM-Poisson process for given count data.
 #'
 #' @param counts A vector (-like object) of counts.
 #' @param s The time interval corresponding to the levels of the counts vector.
 #' @param h.out A boolean indicating if the information matrix and associated standard errors are returned.
 #'     This can have a significant impact on processing time and should be left at the default unless needed
-#' @return \code{CMPProcess} will return a list of seven elements: [1] se (Standard errors), [2] H (Information matrix), [3] lambda,
+#' @return \code{cmpproc} will return a list of seven elements: [1] se (Standard errors), [2] H (Information matrix), [3] lambda,
 #'     [4] nu, [5] Z, [6] ll (Log likelihood), and [7] aic.
 #'
 #' @examples
 #' ## Standard usage
 #' data(floodcount)
-#' CMPProcess(floodcount$Counts)
+#' cmpproc(floodcount$Counts)
 #'
 #' ## Aggregate to s-unit = 3
 #' #three.year.bins <- list(floor((floodcount$Year-min(floodcount$Year))/3))
 #' #collapsed.floodcount <- aggregate( x = floodcount, by = three.year.bins, FUN=sum)
-#' #CMPProcess(collapsed.floodcount$Counts, s= 3)
+#' #cmpproc(collapsed.floodcount$Counts, s= 3)
 #'
 #' @import compoisson
 #' @import numDeriv
@@ -25,16 +25,16 @@
 #'
 #' @export
 
-CMPProcess <- function(counts, s=1, h.out = FALSE) {
+cmpproc <- function(counts, s=1, h.out = FALSE) {
   if (s == 1) {
-    CMPProc(counts, h.out)
+    single.cmp(counts, h.out)
   }
   else {
-    SCMPProc(counts, h.out)
+    multi.cmp(counts, h.out)
   }
 }
 
-CMPProc <- function(counts, h.out= F)
+single.cmp <- function(counts, h.out= F)
 {
   LambdaNuPair <- function(par)
   {
@@ -65,7 +65,7 @@ CMPProc <- function(counts, h.out= F)
   return(list(se=se, H=H, lambda=lambda, nu=nu, Z=Z, ll=loglike, aic=(4-2*loglike)))
 }
 
-SCMPProc <- function(counts, s, h.out = F)
+multi.cmp <- function(counts, s, h.out = F)
 {
   LambdaNuPair <- function(par)
   {
