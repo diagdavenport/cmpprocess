@@ -2,18 +2,18 @@ Package: cmpprocess
 Type: Package
 Title: Flexible Modeling of Count Processes
 Version: 1.0
-Authors@R: as.person(c(
-    "Li Zhu [aut]", 
-    "Kimberly Sellers <Kimberly.Sellers@georgetown.edu> [aut]",
-    "Darcy Morris <dls333@cornell.edu> [aut]",
-    "Galit Shmueli [aut]",
-    "Diag Davenport <diag.davenport@gmail.com> [aut, cre]"
-    ))
+Authors@R: c(
+    person("Li", "Zhu" , role = "aut"), 
+    person("Kimberly", "Sellers", email = "Kimberly.Sellers@georgetown.edu", role = "aut"),
+    person("Darcy" , "Morris", email = "dls333@cornell.edu" , role = "aut"),
+    person("Galit" , "Shmueli" , role = "aut"),
+    person("Diag", "Davenport", email = "diag.davenport@gmail.com",  role = c("aut", "cre"))
+    )
 Maintainer: Diag Davenport <diag.davenport@gmail.com>
 Description: A toolkit for flexible modeling of count processes where data (over- or under-) dispersion exists.
     Estimations can be obtained under two data constructs where one has:
     (1) data on number of events in an s-unit time interval, or (2) only wait-time data.
-    This package is supplementary to the work set forth in Zhu et al. (2016).
+    This package is supplementary to the work set forth in Zhu et al. (2016) <doi: 10.1080/00031305.2016.1234976>.
 Imports: 
     compoisson,
     numDeriv

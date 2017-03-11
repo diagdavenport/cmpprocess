@@ -14,11 +14,6 @@
 #' data(floodcount)
 #' cmpproc(floodcount$Counts)
 #'
-#' ## Aggregate to s-unit = 3
-#' #three.year.bins <- list(floor((floodcount$Year-min(floodcount$Year))/3))
-#' #collapsed.floodcount <- aggregate( x = floodcount, by = three.year.bins, FUN=sum)
-#' #cmpproc(collapsed.floodcount$Counts, s= 3)
-#'
 #' @import compoisson
 #' @import numDeriv
 #' @import stats
@@ -41,18 +36,18 @@ single.cmp <- function(counts, h.out= F)
     total <- sum(log(factorial(counts)))
     -(log(par[1]) * sum(counts) - par[2] * total - length(counts) * com.compute.log.z(par[1],par[2],exp(-20)))
   }
-  
+
   LambdaNuEst <- nlminb(start = c(1,1), LambdaNuPair, lower = c(exp(-10),exp(-10)), upper =c(Inf, Inf))
-  
+
   if (h.out == TRUE) H <- hessian(LambdaNuPair, LambdaNuEst$par)
   else               H <- NA
-  
+
   se <- sqrt(diag(solve(H)))
   lambda <- LambdaNuEst$par[1]
   nu <- LambdaNuEst$par[2]
   Z <- com.compute.z(lambda,nu)
   loglike <- -LambdaNuEst$objective
-  
+
   cat("log likelihood:",loglike,"\n")
   cat("lambda:",lambda,"\n")
   cat("nu:",nu,"\n")
@@ -61,7 +56,7 @@ single.cmp <- function(counts, h.out= F)
   cat("real dispersion:", var(counts)/mean(counts),"\n")
   cat("waiting time distribution is geometric with parameter:", 1-1/Z,"\n")
   cat("AIC:",4-2*loglike,"\n")
-  
+
   return(list(se=se, H=H, lambda=lambda, nu=nu, Z=Z, ll=loglike, aic=(4-2*loglike)))
 }
 
@@ -69,7 +64,7 @@ multi.cmp <- function(counts, s, h.out = F)
 {
   LambdaNuPair <- function(par)
   {
-    
+
     w <- 1
     total <- 0
     while(w <= length(counts))
@@ -77,21 +72,21 @@ multi.cmp <- function(counts, s, h.out = F)
       total <- total +log(dSCMP(s,par[1],par[2],counts[w]))
       w <- w + 1
     }
-    
+
     -total
   }
-  
+
   LambdaNuEst <- nlminb(start = c(.01,.01), LambdaNuPair,lower = c(exp(-20),exp(-20)), upper =c(Inf, Inf),control=list(trace=1))
-  
+
   if (h.out == TRUE)   H <- hessian(LambdaNuPair, LambdaNuEst$par)
   else                 H <- NA
-  
+
   se <- sqrt(diag(solve(H)))
   lambda <- LambdaNuEst$par[1]
   nu <- LambdaNuEst$par[2]
   loglike <- -LambdaNuEst$objective
   Z <- com.compute.z(lambda,nu)
-  
+
   cat("log likelihood:",loglike,"\n")
   cat("lambda:",lambda,"\n")
   cat("nu:",nu,"\n")
@@ -99,22 +94,22 @@ multi.cmp <- function(counts, s, h.out = F)
   cat("nu se:",se[2],"\n")
   cat("waiting time distribution is geometric with parameter:", 1-1/(com.compute.z(lambda,nu)),"\n")
   cat("AIC:",4-2*loglike,"\n")
-  
+
   return(list(se=se, H=H, lambda=lambda, nu=nu, Z=Z, ll=loglike, aic=(4-2*loglike)))
 }
 
 dSCMP <- function(NuOfVar,Lambda,Nu,count)
 {
-  
+
   lambda <- rep.int(Lambda,NuOfVar)
   nu <- rep.int(Nu,NuOfVar)
-  
+
   if(length(lambda) == 1)
   {
     print("NuOfVar must be > 1. If interested in computing probability where NuOfVar = 1, run dcom in compoisson package.")
     return("TRY AGAIN!")
   }
-  
+
   m <- 1
   while(m <= length(lambda))
   {
@@ -125,11 +120,11 @@ dSCMP <- function(NuOfVar,Lambda,Nu,count)
     }
     m <- m + 1
   }
-  
+
   a <- numeric(0)
   keep <- numeric(0)
   total <- 0
-  
+
   if (length(lambda) == 2)
   {
     a[1] <- 0
@@ -143,7 +138,7 @@ dSCMP <- function(NuOfVar,Lambda,Nu,count)
     result <- 1/(com.compute.z(lambda[1],nu[1],exp(-30))*(com.compute.z(lambda[2],nu[2],exp(-30))))* sum(keep)
     return(result)
   }
-  
+
   recur <- function(number,iterator)
   {
     a <- numeric(0)
@@ -153,7 +148,7 @@ dSCMP <- function(NuOfVar,Lambda,Nu,count)
     storage[[1]] <- numeric(0)
     sum1 <- 0
     sum2 <- 0
-    
+
     if (number == 2)
     {
       a[1] <- 0
@@ -183,7 +178,7 @@ dSCMP <- function(NuOfVar,Lambda,Nu,count)
         return(sum(storage[[t]]))
       }
     }
-    
+
     w <- 1
     result2 <- 1
     while(w <= length(lambda))
@@ -194,8 +189,8 @@ dSCMP <- function(NuOfVar,Lambda,Nu,count)
     result2 <- result2 * (sum(storage[[t]]))
     return(result2)
   }
-  
-  
-  
+
+
+
   recur(length(lambda),count)
 }

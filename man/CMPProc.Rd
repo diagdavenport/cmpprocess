@@ -26,9 +26,4 @@ This can have a significant impact on processing time and should be left at the 
 data(floodcount)
 cmpproc(floodcount$Counts)
 
-## Aggregate to s-unit = 3
-#three.year.bins <- list(floor((floodcount$Year-min(floodcount$Year))/3))
-#collapsed.floodcount <- aggregate( x = floodcount, by = three.year.bins, FUN=sum)
-#cmpproc(collapsed.floodcount$Counts, s= 3)
-
 }

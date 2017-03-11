@@ -1,3 +1,10 @@
+## Resubmission
+
+This is a resubmission. In this version I have:
+
+* added a doi reference to the DESCRIPTION
+* Fixed person call in Authors@R field
+
 ## Test environments
 
 * win-builder (devel and release)
