@@ -39,10 +39,15 @@ single.cmp <- function(counts, h.out= F)
 
   LambdaNuEst <- nlminb(start = c(1,1), LambdaNuPair, lower = c(exp(-10),exp(-10)), upper =c(Inf, Inf))
 
-  if (h.out == TRUE) H <- hessian(LambdaNuPair, LambdaNuEst$par)
-  else               H <- NA
+  if (h.out == TRUE) {
+    H <- hessian(LambdaNuPair, LambdaNuEst$par)
+    se <- sqrt(diag(solve(H)))
+  }
+  else  {
+    H <- NA
+    se <- NA
+  }
 
-  se <- sqrt(diag(solve(H)))
   lambda <- LambdaNuEst$par[1]
   nu <- LambdaNuEst$par[2]
   Z <- com.compute.z(lambda,nu)
